@@ -25,12 +25,6 @@ export const Sidebar = ({
     { name: "Profile", icon: "fa-user-astronaut" },
   ];
 
-  const isAdmin = user?.roles?.includes("admin");
-  if (isAdmin) {
-      links.push({ name: "AdminDashboard", icon: "fa-shield-halved", label: "Admin Panel" });
-      links.push({ name: "SystemArchitecture", icon: "fa-diagram-project", label: "System Flow" });
-  }
-
   return (
     <div className={`${collapsed ? 'w-20' : 'w-64'} bg-slate-900 text-white h-screen flex flex-col fixed left-0 top-0 shadow-2xl z-50 transition-all duration-300 ease-in-out`}>
       <div className={`p-6 flex items-center ${collapsed ? 'justify-center' : 'gap-3'} border-b border-slate-800 transition-all`}>
