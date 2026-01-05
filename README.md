@@ -18,9 +18,19 @@ An AI-assisted DSA practice dashboard with Firebase authentication, live LeetCod
 ```bash
 npm install
 ```
-2) Configure Firebase (already wired, but keep for reference):
-   - Ensure **Authentication** is enabled in Firebase Console (Email/Password and Google).
-   - The app reads the config from `firebaseConfig.ts` (already populated).
+2) Configure Firebase :
+   - Ensure to fill the value for
+     ```bash
+     const firebaseConfig = {
+     apiKey: ,
+     authDomain: ,
+     projectId: ,
+     storageBucket: ,
+     messagingSenderId: ,
+     appId: ,
+     measurementId: 
+     ```
+   - The app reads the config from `firebaseConfig.ts` so fill the value there.
 3) Run dev server:
 ```bash
 npm run dev
