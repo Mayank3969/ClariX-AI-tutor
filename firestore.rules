@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default Deny: Block all access unless explicitly allowed below
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // User Profiles
+    // Users can read/write only their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // TOPIC SCOPING ENFORCEMENT
+    // Posts must be nested: topics -> algorithms -> posts
+    // This strictly prevents "global" feeds by ensuring every post is tied to a specific ID.
+    match /topics/{topicId}/algorithms/{algorithmId}/posts/{postId} {
+      // Read: Authenticated users can read posts
+      allow read: if request.auth != null;
+      
+      // Write: Authenticated users can create/update posts
+      // Additional validation (e.g., checking author ID) would go here
+      allow write: if request.auth != null;
+    }
+
+    // Note: No match block for /posts/{postId} exists, 
+    // so root-level post creation is strictly denied.
+  }
+}

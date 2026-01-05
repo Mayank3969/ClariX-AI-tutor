@@ -1,0 +1,31 @@
+
+steps:
+  # 1. Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/clarix-ai-service', './python-service']
+
+  # 2. Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/clarix-ai-service']
+
+  # 3. Deploy container to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'clarix-ai-service'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/clarix-ai-service'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '2Gi'
+      - '--set-env-vars'
+      - 'API_KEY=$_GEMINI_API_KEY'
+
+images:
+  - 'gcr.io/$PROJECT_ID/clarix-ai-service'
