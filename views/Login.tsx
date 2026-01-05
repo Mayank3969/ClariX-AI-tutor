@@ -18,22 +18,6 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
     setMobileMenuOpen(false);
   };
 
-  const openMethodologyModal = () => {
-      setModalContent({
-          title: 'The Clarix Methodology',
-          body: 'We use Topic Locking to prevent AI hallucinations. Unlike generic chatbots, our AI is strictly bound to the current subject (e.g., OOP or Graphs) to ensure academic accuracy.'
-      });
-      setMobileMenuOpen(false);
-  };
-
-  const openPricingModal = () => {
-      setModalContent({
-          title: 'Pricing',
-          body: 'Clarix AI is currently in Beta. All features are Free for early adopters. No credit card required.'
-      });
-      setMobileMenuOpen(false);
-  };
-
   return (
     <div className="min-h-screen bg-[#0f172a] font-['Poppins'] text-slate-200 overflow-x-hidden selection:bg-blue-500 selection:text-white">
       
@@ -52,9 +36,9 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
           {/* Center: Navigation Links */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400 absolute left-1/2 -translate-x-1/2">
             <button onClick={() => scrollToSection('features')} className="hover:text-white transition-colors duration-200">Features</button>
+            <button onClick={() => scrollToSection('methodology')} className="hover:text-white transition-colors duration-200">Methodology</button>
             <button onClick={() => scrollToSection('journey')} className="hover:text-white transition-colors duration-200">Journey</button>
-            <button onClick={openMethodologyModal} className="hover:text-white transition-colors duration-200">Methodology</button>
-            <button onClick={openPricingModal} className="hover:text-white transition-colors duration-200">Pricing</button>
+            <button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors duration-200">Pricing</button>
           </div>
 
           {/* Right: Auth Actions */}
@@ -86,6 +70,13 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
 
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
           
+          {/* Headlines */}
+          <h1 className="max-w-5xl text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1] drop-shadow-2xl">
+            Master the Core of <br className="hidden md:block"/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 animate-gradient-x">Computer Science.</span> <br />
+            Without the Chaos.
+          </h1>
+
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold mb-8 backdrop-blur-sm animate-fade-in-up">
               <span className="relative flex h-2 w-2">
@@ -94,13 +85,6 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
               </span>
               v2.0 Now Available with Gemini Pro
           </div>
-
-          {/* Headlines */}
-          <h1 className="max-w-5xl text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1] drop-shadow-2xl">
-            Master the Core of <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 animate-gradient-x">Computer Science.</span> <br />
-            Without the Chaos.
-          </h1>
 
           <p className="max-w-2xl text-lg md:text-xl text-slate-400 mb-10 leading-relaxed font-light">
             Structured learning paths, topic-locked AI tutoring, and LeetCode integration. The first platform designed for deep work, not doomscrolling.
@@ -111,7 +95,7 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
             <button onClick={onLogin} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-bold text-lg shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_0_60px_-15px_rgba(37,99,235,0.6)] hover:-translate-y-1 transition-all duration-300">
               Start Your Mastery Journey
             </button>
-            <button onClick={openMethodologyModal} className="px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-2 backdrop-blur-sm">
+            <button onClick={() => scrollToSection('methodology')} className="px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-2 backdrop-blur-sm">
               Explore Methodology
             </button>
           </div>
@@ -191,6 +175,90 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
         </div>
       </section>
 
+      {/* Methodology Section (New) */}
+      <section id="methodology" className="relative py-24 bg-[#0f172a] border-t border-white/5 overflow-hidden">
+         {/* Background Elements */}
+         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+         <div className="container mx-auto px-6 relative z-10">
+            <div className="text-center mb-20">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The Clarix Difference</h2>
+                <p className="text-lg md:text-xl text-slate-400 font-light max-w-3xl mx-auto">
+                    Generic AI hallucinates. We engineered a dual-layer approach to ensure academic accuracy.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                {/* Visual Column: Schematic */}
+                <div className="relative group">
+                    <div className="absolute inset-0 bg-blue-600/10 blur-3xl rounded-full opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                    <div className="relative bg-slate-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl h-[400px] flex items-center justify-center overflow-hidden">
+                        {/* CSS/SVG Schematic */}
+                        <div className="relative w-full max-w-sm aspect-square">
+                            {/* Connecting Line (Pulsing) */}
+                            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-slate-700 via-blue-500 to-indigo-500 -translate-y-1/2 opacity-30"></div>
+                            
+                            {/* Data Packet Animation */}
+                            <div className="absolute top-1/2 left-0 w-20 h-1 bg-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.8)] -translate-y-1/2 animate-slide-right rounded-full z-0"></div>
+
+                            {/* Node 1: Topic */}
+                            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-24 h-24 bg-[#1e293b] border-2 border-slate-600 rounded-full flex flex-col items-center justify-center z-10 shadow-lg">
+                                <i className="fa-solid fa-layer-group text-slate-400 text-2xl mb-1"></i>
+                                <span className="text-[10px] font-bold text-slate-400 uppercase">Topic</span>
+                            </div>
+
+                            {/* Node 2: The Lock (Center) */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center z-20 shadow-[0_0_30px_rgba(37,99,235,0.4)] border border-blue-400 transform rotate-45 group-hover:rotate-0 transition-all duration-500">
+                                <i className="fa-solid fa-lock text-3xl text-white transform -rotate-45 group-hover:rotate-0 transition-all duration-500"></i>
+                            </div>
+
+                            {/* Node 3: AI Brain */}
+                            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-indigo-600 to-purple-600 border-2 border-indigo-400 rounded-full flex flex-col items-center justify-center z-10 shadow-lg animate-pulse-slow">
+                                <i className="fa-solid fa-brain text-white text-2xl mb-1"></i>
+                                <span className="text-[10px] font-bold text-indigo-100 uppercase">AI Core</span>
+                            </div>
+                            
+                            {/* Labels */}
+                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center w-full">
+                                <span className="text-xs font-mono text-blue-400 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-500/30">
+                                    Context Locked: "Graph Theory"
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Text Column */}
+                <div className="space-y-12">
+                    <div className="flex gap-6">
+                        <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i className="fa-solid fa-lock text-2xl text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-white mb-2">Strict Context Scoping</h3>
+                            <p className="text-slate-400 leading-relaxed text-lg">
+                                When you study Graphs, we physically lock the AI's context window to Graph Theory. It cannot confuse BFS with generic search terms, ensuring every answer is mathematically precise.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-6">
+                        <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i className="fa-solid fa-comments text-2xl text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-white mb-2">Socratic Guidance Engine</h3>
+                            <p className="text-slate-400 leading-relaxed text-lg">
+                                Answers are cheap. Clarix asks you the right question to trigger the realization yourself—building actual neural pathways instead of just copy-pasting code.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </section>
+
       {/* Project Journey Section (Timeline) */}
       <section id="journey" className="relative py-32 bg-[#0b1120] border-t border-white/5 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -248,40 +316,47 @@ export const Login = ({ onLogin }: { onLogin: () => void }) => {
         </div>
       </section>
 
-      {/* Methodology Section */}
-      <section id="methodology" className="relative py-24 bg-[#0f172a] border-t border-white/5">
-        <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">The Clarix Methodology</h2>
-                <div className="h-1 w-16 bg-blue-600 mx-auto rounded-full shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
-            </div>
+      {/* Pricing Section */}
+      <section id="pricing" className="relative py-24 bg-gradient-to-b from-[#0b1120] to-[#020617] border-t border-white/5">
+        <div className="container mx-auto px-6 relative z-10 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">Invest in Your Skills, Not Subscriptions</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-               <div className="p-10 rounded-3xl bg-[#0B1120] border border-white/10 hover:border-indigo-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-600/5 rounded-full blur-[80px] -mr-16 -mt-16 pointer-events-none group-hover:bg-indigo-600/10 transition-colors"></div>
-                  
-                  <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-6">
-                    <i className="fa-solid fa-lock text-2xl text-indigo-400"></i>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-4">Context Locking</h3>
-                  <p className="text-slate-400 leading-relaxed text-lg">
-                      Generic bots hallucinate. Clarix locks the AI context to specific DSA topics to ensure specialized, grounded tutoring for the exact concept you are mastering.
-                  </p>
-               </div>
+            <div className="max-w-[600px] mx-auto bg-slate-900/50 backdrop-blur-xl border border-blue-500/30 shadow-2xl shadow-blue-900/20 rounded-3xl p-8 md:p-12 relative overflow-hidden group hover:border-blue-500/50 transition-all duration-300">
+                {/* Glow Blob */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-600/20 blur-[80px] rounded-full pointer-events-none"></div>
+                
+                <div className="relative z-10">
+                    <div className="inline-block bg-blue-900/30 border border-blue-500/30 text-blue-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-6">
+                        Early Access Beta
+                    </div>
+                    
+                    <h3 className="text-6xl font-black text-white mb-2 tracking-tight drop-shadow-lg">$0<span className="text-2xl text-slate-400 font-normal">/mo</span></h3>
+                    <p className="text-slate-400 mb-8">No credit card required.</p>
+                    
+                    <div className="space-y-4 text-left max-w-xs mx-auto mb-10">
+                        {[
+                            'Unlimited AI Tutoring',
+                            'Full Topic Access (DSA, OOP, OS)',
+                            'LeetCode Sync & Analytics',
+                            'Community Access'
+                        ].map((feat, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                                    <i className="fa-solid fa-check text-emerald-400 text-xs"></i>
+                                </div>
+                                <span className="text-slate-300 font-medium">{feat}</span>
+                            </div>
+                        ))}
+                    </div>
 
-               <div className="p-10 rounded-3xl bg-[#0B1120] border border-white/10 hover:border-purple-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/5 rounded-full blur-[80px] -mr-16 -mt-16 pointer-events-none group-hover:bg-purple-600/10 transition-colors"></div>
-                  
-                  <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6">
-                    <i className="fa-solid fa-graduation-cap text-2xl text-purple-400"></i>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-white mb-4">Socratic Guidance</h3>
-                  <p className="text-slate-400 leading-relaxed text-lg">
-                      Mastery comes from "why", not "what". Our AI asks guiding questions, forcing your brain to build the neural pathways required for real-world problem solving.
-                  </p>
-               </div>
+                    <button onClick={onLogin} className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-blue-900/40 transition-all transform hover:-translate-y-1">
+                        Get Started Now
+                    </button>
+                    
+                    <p className="text-xs text-slate-500 mt-6">
+                        Free forever for early adopters who join during the Beta phase.
+                    </p>
+                </div>
             </div>
         </div>
       </section>
